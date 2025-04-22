@@ -13,7 +13,9 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken});//provide coordin
 // const multer = require("multer");
 // const upload = multer({storage});
 
-
+module.exports.mainRoute = (req,res)=>{
+    res.redirect("/showlisting?category=trending");
+}
 
 // show all listing
 module.exports.showRoute = wrapAsync(async(req,res,next)=>{

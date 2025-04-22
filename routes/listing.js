@@ -14,6 +14,9 @@ const listingController = require("../controllers/listing.js");
 
 // listings routes
 
+//  / route
+router.get("/",(listingController.mainRoute));
+
 // show all listing route
 router.get("/showlisting", (listingController.showRoute));
 
