@@ -1,0 +1,118 @@
+<% layout ("/layouts/boillerplate") %>
+<script> /* this is dynamic data which is not directly access by js files so we send to js files from  here  */
+    const mapToken = "<%= process.env.MAP_TOKEN %>";
+    const coordinates = "<%- JSON.stringify(listing.geometry.coordinates)  %>"
+    const parsedCoordinates = JSON.parse(coordinates);
+    const listing  = JSON.parse('<%- JSON.stringify(listing)  %>');
+    
+</script>
+<body>
+    <div class="row">
+        <div class="col-8 offset-3">
+            <div class="card card-div" >
+                <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="image"> 
+                <div class="card-body body-div">
+                    <div class="row">
+                        <div class="col-4">
+                            <p class="card-text text-decoration-underline"><b> <i> <%= listing.title %> </i></b> </p>
+                        </div>
+                        <div class="col-4">
+                            <p class="card-text text-decoration-underline"><b> <i>Category- </i> <span style="color: brown;"> <%= listing.category%></span></b> </p>
+                        </div>
+                        <div class="col-4">
+                            <p class="card-text text-decoration-underline"><b> <i>ownedBy- </i> <span style="color: brown;"> <%= listing.owner.username %></span></b> </p>
+                        </div>
+                    </div>
+                     <p class="des-pera"><%= listing.description %></p> 
+                     <p class="card-text">&#8377;<b><%= listing.price.toLocaleString("en-IN") %></b> </p>
+                     <p class="card-text"> <%= listing.location %></p> 
+                    <p class="card-text"><%= listing.country %></p> <br>
+                </div>
+              </div>
+        </div>
+    </div>
+ <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+   <div class="row edit-del-btns" style="margin-left: 16.8rem;" >
+        <div class="col-sm-1">
+       
+            <form action="/listing/<%= listing._id %>/edit" method="get">
+                <button class="btn btn-outline-danger edit-btn">Edit</button>
+            </form>
+        </div>
+        <div class="col-sm-1">
+            <form action="/listing/<%= listing._id %>/delete?_method=DELETE" method="post">
+                <button class="btn btn-outline-dark del-btn">Delete</button>
+            </form>
+         
+        </div>
+    
+   </div>
+ <% } %>
+
+ <% if(currUser) { %>
+<hr>
+            <h5 class="fw-semibold text-decoration-underline">Leave A Review</h5>
+        <form action="/listing/<%= listing._id %>/review" method="post" novalidate class="needs-validation">
+     <div class="row">   
+        <div class="col-10 ">
+            <fieldset class="starability-slot">
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible"></label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good"></label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average"></label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good"></label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing"></label>
+              </fieldset>
+            </div>
+     </div>
+      <div class="row">
+        <div class="col-8">
+            <div class="comment mb-3">
+                <label for="comment" class="form-label fw-medium">Comment</label>
+                <textarea name="review[comment]"rows="4" cols="4" placeholder="Leave your valuable comment" class="form-control" required></textarea>
+                <div class="invalid-feedback">
+                    please add some comment for review
+                </div>
+            </div>
+        </div>
+      </div>
+            <button class="btn btn-outline-success">Submit</button>
+        </form>
+  <% } %>
+   
+  <% if(listing.review.length){ %>
+    <hr>
+<div class="row">
+    <p class="text-decoration-underline ms-2 fs-5"><b>All Reviews</b></p>
+    <% for(let review of listing.review){ %>
+        <div class="col-8 see-review-div">
+            <p class="card-text fw-medium text-decoration-underline">@<%= review.author.username %></p>
+            <p class="starability-result" data-rating="<%= review.rating %>"></p>
+            <p class="card-text fw-medium"><%= review.comment %></p>
+            <div class="card-text date"><%=  new Date(review.createdAt).toLocaleDateString("en-IN") %></div>
+            <div class="card-text time"><%=  new Date(review.createdAt).toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit",hour12:true})%></div>
+            <form action="/listing/<%= listing._id %>/review/<%= review._id %>?_method=DELETE" method="post">
+               <button class="trash-btn"><i class="fa-solid fa-trash"></i></button>
+            </form>
+       </div>
+    <% } %>
+</div>
+<% } %>
+
+<hr>
+    <div class="row">
+        <h3 class="ms-1">Were you'll be</h3>
+        <div class="col-6 ms-1">
+            <div id="map"></div>
+        </div>
+    </div>
+   
+
+<script src="/js/map.js"></script>
+</body>
+

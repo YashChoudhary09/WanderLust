@@ -1,0 +1,68 @@
+<% layout ("/layouts/boillerplate") %>
+<body  style="background-color:#ebebeb;">
+    <div class="row">
+        <div class="col-8 offset-2">
+    <form action="/listing" method="post" novalidate class="needs-validation" enctype="multipart/form-data">  <!--validation for all reqiured feilds from bootstrap-->
+        <br>
+        <div class="mb-3">
+            <label for="title" class="form-label fw-semibold">Title</label>
+            <input type="text" name="listing[title]" placeholder="enter title" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label fw-semibold">Description</label>
+            <textarea name="listing[description]" placeholder="enter description" class="form-control" required></textarea>
+            <div class="invalid-feedback">
+               Enter Short Description
+              </div>
+        </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="image" class="form-label fw-semibold">Uplaod image</label>
+            <input type="file" name="listing[image]"class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="category" class="form-label fw-semibold">Choose category</label>
+            <select name="listing[category]" id="category" class="form-control" required>
+                <option value="pool">pool</option>
+                <option value="beach">beach</option>
+                <option value="farms">farms</option>
+                <option value="lake">lake</option>
+                <option value="mountain city">mountain city</option>
+                <option value="doms">doms</option>
+                <option value="camping">camping</option>
+                <option value="trending">trending</option>
+                <option value="others">others</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-4">
+            <label for="price" class="form-label fw-semibold">Price</label>
+            <input type="text" name="listing[price]" placeholder="enter price" class="form-control" required>
+            <div class="invalid-feedback">
+               Enter Valid Price
+              </div>
+        </div>
+        <div class="mb-3 col-md-8">
+            <label for="country" class="form-label fw-semibold">Country</label>
+            <input type="text" name="listing[country]" placeholder="enter country" class="form-control" required>
+            <div class="invalid-feedback">
+              Enter Valid Country Name
+              </div>
+        </div>
+    </div>
+        <div class="mb-3">
+            <label for="location" class="form-label fw-semibold">Location</label>
+            <input type="text" name="listing[location]" placeholder="enter location" class="form-control" required>
+            <div class="invalid-feedback">
+              Enter Valid Location
+              </div>
+        </div>
+        <button class="btn add-btn btn-outline-danger">Add</button>
+    </form>
+     </div>
+</div>  
+</body>

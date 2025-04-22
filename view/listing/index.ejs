@@ -1,0 +1,137 @@
+<% layout ("/layouts/boillerplate") %>
+<body>
+    <!-- <form action="/listing/new" method="get">
+        <button>Create Listing</button>
+    </form> -->
+    <div id="filters">
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="pool">
+                    <button class="btn"><i class="fa-solid fa-person-swimming"></i></button>
+                </form>
+            </div>
+            <p>Amazing Pool</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="beach">
+                    <button class="btn">  <i class="fa-solid fa-umbrella-beach"></i></button>
+                </form>
+            </div>
+            <p>Beach</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="trending">
+                    <button class="btn">   <i class="fa-solid fa-fire"></i></button>
+                </form>
+            </div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="farms">
+                    <button class="btn">  <i class="fa-solid fa-cow"></i></button>
+                </form>
+            </div>
+            <p>Farms</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="lake">
+                    <button class="btn">  <i class="fa-solid fa-snowflake"></i></button>
+                </form>
+            </div>
+            <p>Lake</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="mountain city">
+                    <button class="btn"> <i class="fa-solid fa-mountain-city"></i></button>
+                </form>
+               
+            </div>
+            <p>Mountain City</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="doms">
+                    <button class="btn">  <i class="fa-solid fa-igloo"></i></button>
+                </form>
+            </div>
+            <p>Doms</p>
+        </div>
+        <div class="filter">
+            <div class="icon">
+                <form action="/showlisting" method="get">
+                    <input type="hidden" name="category" value="camping">
+                    <button class="btn">  <i class="fa-solid fa-campground"></i></button>
+                </form>
+            </div>
+            <p>Camping</p>
+        </div>
+    <div class="tax-div">
+        <div class="form-check form-switch form-check-reverse">
+            <input class="form-check-input" type="checkbox" id="switchCheckReverse">
+            <label class="form-check-label" for="switchCheckReverse">Display total after taxes</label>
+          </div>
+    </div>
+</div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+
+    <% if(listing.length > 0){ %>
+        <% for(let i = 0; i < listing.length; i++){ %>
+      
+        <a href="/listing/<%= listing[i]._id %>" class="listing-link">
+            <div class="card col listing-card" style="width: 22rem;">
+                <img src="<%= listing[i].image.url %>"class="card-img-top" alt="listing-image" style="height: 20rem;">
+                <div class="card-body">
+                    <div class="card-img-overlay"></div>
+                  <p class="card-text">
+                     <b><%= listing[i].title %> </b> <br>
+                    &#8377;<%= listing[i].price.toLocaleString("en-IN") %> / night,
+                    <i class="taxes-info">+18% GST</i>
+                  </p>
+                  
+                </div>
+            </div>
+        </a>
+         <% } %>
+    <% } %>
+
+    </div>
+   
+</body>
+
+<script>
+    const togglebtn  = document.getElementById("switchCheckReverse");
+    togglebtn.addEventListener("click",()=>{
+        let taxInfo = document.getElementsByClassName("taxes-info");
+      for(let info of taxInfo){
+        if( info.style.display !== "inline"){
+            info.style.display = "inline";
+        } else{
+            info.style.display = "none";
+        }
+       
+      }
+    
+    })
+
+  
+        // let swimmingBtn = document.querySelector(".swimming-btn");
+        // swimmingBtn.addEventListener("click",()=>{
+        //     console.log("clicked");
+        // })
+   
+
+</script>
+
+

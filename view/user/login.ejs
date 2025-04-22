@@ -1,0 +1,22 @@
+<% layout ("/layouts/boillerplate") %>
+<body>
+<div class="row">
+  <div class="col-6 offset-3">
+    <h3 class="col-8 offset-3 text-decoration-underline">login</h3>
+    <form action="/login" method="post" novalidate class="needs-validation">  <!--validation for all reqiured feilds from bootstrap-->
+        <br>
+        <div class="mb-3">
+            <label for="username" class="form-label fw-semibold text-decoration-underline">username</label>
+            <input type="text" name="username" placeholder="enter username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label fw-semibold text-decoration-underline">password</label>
+            <input type="password" name="password" placeholder="enter password" class="form-control" required>
+        </div>
+        <br>
+        <button class="btn btn-success">login</button>
+        <br>
+    </form>
+  </div>
+</div>
+</body>
