@@ -15,11 +15,12 @@ body{
     background-color: white;
 }
 @media(max-width:780px){
-    .navbar{
-        height: 8rem;
-        background-color: white;
-        overflow: auto;
-    }
+   .container-fluid{
+    background-color: #fff !important;
+   }
+   /* .nav-link{
+    display: none !important;
+   } */
 }
 .fa-compass{
     color: #fe424d;
@@ -43,6 +44,15 @@ body{
     margin-left: 0.7rem !important;
     box-shadow: 2px 2px 4px #222222;
 }
+
+/* @media(max-width:500px){
+      .navbar-nav{
+       
+        height: 5rem !important;
+        position: sticky !important;
+        background-color: #fff !important;
+      }
+} */
 
 .search-btn i{
   display: inline !important;
@@ -275,6 +285,8 @@ footer{
     flex-wrap: wrap;
  }
 
+ 
+
  .filter{
     margin: 1rem 2rem  0.8rem 0;
     text-align: center;
@@ -295,6 +307,15 @@ footer{
     box-shadow: 4px 4px 6px #222222!important;
  }
  
+ @media(max-width:500px){
+    #filters{
+      display: grid;
+      grid-template-rows: 5rem;
+      grid-template-columns: 6rem 6rem 6rem 6rem ;
+
+    }
+
+ }
  /* taxes-index.js */
 
  .taxes-info{

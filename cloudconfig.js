@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({  // multer save the frontend files in st
     cloudinary: cloudinary,
     params: {
       folder: 'wanderlust_dev',
-      allowedFormats: ["png","jpg","jpeg"],
+      allowedFormats: ["png","jpg","jpeg","avif"],
     },
   });
    
