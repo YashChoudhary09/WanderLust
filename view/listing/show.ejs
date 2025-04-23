@@ -13,17 +13,17 @@
                 <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="image"> 
                 <div class="card-body body-div">
                     <div class="row information-div">
-                        <div class="col-4 title">
-                            <p class="card-text text-decoration-underline"><b> <i> <%= listing.title %> </i></b> </p>
+                        <div class="col-md-4 title">
+                            <p class="card-text title-p"><b> Title:<i><span class="text-decoration-underline"> <%= listing.title %> </span></i></b> </p>
                         </div>
                         <div class="col-4 category">
                             <p class="card-text text-decoration-underline "><b> <i>Category- </i> <span style="color: brown;"> <%= listing.category%></span></b> </p>
                         </div>
-                        <div class="col-4 ownedBy">
-                            <p class="card-text text-decoration-underline"><b> <i>ownedBy- </i> <span style="color: brown;"> <%= listing.owner.username %></span></b> </p>
+                        <div class="col-md-4 ownedBy">
+                            <p class="card-textownedBy-p"><b>Owner- <i><span class="text-decoration-underline" style="color: brown;"> <%= listing.owner.username %></span></i></b></p>
                         </div>
                     </div>
-                     <p class="des-pera"><%= listing.description %></p> 
+                     <p class="des-pera"><i class="fa-solid fa-right-to-bracket"></i>  <%= listing.description %></p> 
                      <p class="card-text">&#8377;<b><%= listing.price.toLocaleString("en-IN") %></b> </p>
                      <p class="card-text"><i class="fa-solid fa-location-dot"></i> <%= listing.location %></p> 
                     <p class="card-text"><i class="fa-solid fa-globe"></i> <%= listing.country %></p> <br>
@@ -33,15 +33,15 @@
     </div>
  <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
    <div class="row edit-del-btns" style="margin-left: 16.8rem;" >
-        <div class="col">
+        <div class="col edit-btn">
        
             <form action="/listing/<%= listing._id %>/edit" method="get">
-                <button class="btn btn-outline-danger edit-btn">Edit</button>
+                <button class="btn btn-outline-danger">Edit</button>
             </form>
         </div>
-        <div class="col">
+        <div class="col del-btn">
             <form action="/listing/<%= listing._id %>/delete?_method=DELETE" method="post">
-                <button class="btn btn-outline-dark del-btn">Delete</button>
+                <button class="btn btn-outline-dark ">Delete</button>
             </form>
          
         </div>
@@ -74,7 +74,7 @@
         <div class="col-8">
             <div class="comment mb-3">
                 <label for="comment" class="form-label fw-medium">Comment</label>
-                <textarea name="review[comment]"rows="4" cols="4" placeholder="Leave your valuable comment" class="form-control" required></textarea>
+                <textarea name="review[comment]"rows="4" cols="2" placeholder="Leave your valuable comment" class="form-control" required></textarea>
                 <div class="invalid-feedback">
                     please add some comment for review
                 </div>
