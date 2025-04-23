@@ -162,6 +162,7 @@ footer{
 
 
 
+
 /* indivisual show listing */
 
  .show-img{
@@ -191,6 +192,28 @@ footer{
     .des-pera{
         width: 20rem !important;
     }
+}
+@media(max-width:500px){
+  .show-listing-div{
+    margin-right: 15rem !important;
+    margin-top: 1rem !important;
+  }
+  .information-div{
+    display: flex !important;
+   flex-wrap: nowrap !important;
+  }
+   .category{
+    display: none;
+   }
+   .title{
+    width: 7rem !important;
+    height: 2rem !important;
+   }
+   .ownedBy{
+    width: 15rem !important;
+    height: 2rem !important;
+    margin-left: 5rem !important;
+   }
 }
 
 
@@ -263,12 +286,26 @@ footer{
     }
 }
 @media(max-width: 580px){
-    .edit-btn{
-        margin-left: 1.5rem !important;
-    }
-    .del-btn{
-      margin-top: 0.5rem !important;
-    }
+   .edit-del-btns{
+    height: 3rem !important;
+    width: 25rem !important;
+    display: flex !important;
+    justify-content: space-evenly;
+   }
+   .edit-btn{
+    margin-left: 2rem !important;
+   }
+   .del-btn{
+    margin-left: 5rem !important;
+   }
+   .see-review-div{
+    width:27rem !important;
+    margin-left: 1rem !important;
+   }
+   .listing-card{
+    margin-left: 2.5rem !important;
+   }
+   
 }
 
 /* map */
@@ -277,6 +314,13 @@ footer{
     width: 1000px;
     margin-bottom: 1rem ;
     box-shadow: 6px 6px 8px #D4C9BE;
+ }
+
+ @media(max-width:500px){
+  #map{
+    width: 450px;
+   
+  }
  }
 
  /* index listing filters */
@@ -312,7 +356,7 @@ footer{
       display: grid;
       grid-template-rows: 5rem;
       grid-template-columns: 6rem 6rem 6rem 6rem ;
-
+     margin-left: 2.5rem !important;
     }
 
  }
