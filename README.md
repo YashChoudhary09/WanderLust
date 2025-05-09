@@ -1,0 +1,1 @@
+ An e-commerce website which helps to find places all around the world to stay and enjoy vacations with friends and family. This website is build using full stack web technologies like MERN with Authentication and Authorization.                  
